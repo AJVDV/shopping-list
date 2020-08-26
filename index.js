@@ -30,17 +30,8 @@ function crossOut(){
     /*have jQuery listen for the click on the check button*/
     $('ul').on('click', '.shopping-item-toggle', function(event) {
         /*add the css class to the span with text that puts a strike through the text on that item*/
-        //first acknowledge current targeted item, there has to be a way to target the list text instead of button :(
-        $('.shopping-item').append("*");
-        console.log($(this).closest('div').siblings('span'));
-        $(this).closest('div').siblings('span').toggleClass('shopping-item_checked');
-        //const targetItem = $(event.currentTarget.closest('li'));
-        //state that other buttons are not targeted
-        //const otherItems = $('.shopping-item').not(targetItem);
-        //have the aria pressed state change when the button is pressed
-        //const pressedBool = $(targetItem).attr('aria-pressed') === 'True';
-        //make it so that it toggles both ways
-        //$('.shopping-item').toggleClass('shopping-item_checked');
+        //first acknowledge current targeted item (the list item), then toggle the class that does strike through
+        $(this).closest('div').siblings('span').toggleClass('shopping-item__checked');
     });
 };
 
@@ -48,9 +39,8 @@ function crossOut(){
 /*create a function that will delete an item when the delete button is clicked*/
 function removeItem(){
     //have it listen for the click of the delete button
-    $('.shopping-list').on('click','shopping-item-delete', function(event) {
-        console.log(this);
-        //remove the item for which the delete button is clicked, need to target entire item instead of button :(
+    $('.shopping-list').on('click','.shopping-item-delete', function(event) {
+        //remove the item for which the delete button is clicked
         $(this).closest("li").remove();
     });
 };
