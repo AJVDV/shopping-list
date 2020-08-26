@@ -1,4 +1,4 @@
-//$(function createItem(){
+function createItem(){
     /*define a function that will create a new item with the text that was entered in the box*/
     $('#js-shopping-list-form').submit(event => {
         //make sure that the form does not try to submit data to server (we don't need that for this)
@@ -20,13 +20,13 @@
       //empty the textbox after new entry is created
       userTextElement.val("");
     });
-//});
+};
 //currently none of this code functions...
 
 
 
 /*create a function to cross out the text in an item whose check button is clicked */
-//$(function crossOut(){
+function crossOut(){
     /*have jQuery listen for the click on the check button*/
     $('ul').on('click', '.shopping-item-toggle', event => {
         /*add the css class to the span with text that puts a strike through the text on that item*/
@@ -41,17 +41,17 @@
         //make it so that it toggles both ways
         //$('.shopping-item').toggleClass('shopping-item_checked');
     });
-//});
+};
 
 
 /*create a function that will delete an item when the delete button is clicked*/
-//$(function removeItem(){
+function removeItem(){
     //have it listen for the click of the delete button
     $('.shopping-list').on('click','shopping-item-delete', event => {
         //remove the item for which the delete button is clicked, need to target entire item instead of button :(
         this.closest("li").remove();
     });
-//});
+};
 
 $(createItem); 
 $(crossOut);
