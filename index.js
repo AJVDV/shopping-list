@@ -1,6 +1,6 @@
 function createItem(){
     /*define a function that will create a new item with the text that was entered in the box*/
-    $('#js-shopping-list-form').submit(event => {
+    $('#js-shopping-list-form').submit(function(event) {
         //make sure that the form does not try to submit data to server (we don't need that for this)
         event.preventDefault();
         //have the event find the text in the textbox on click
@@ -28,11 +28,12 @@ function createItem(){
 /*create a function to cross out the text in an item whose check button is clicked */
 function crossOut(){
     /*have jQuery listen for the click on the check button*/
-    $('ul').on('click', '.shopping-item-toggle', event => {
+    $('ul').on('click', '.shopping-item-toggle', function(event) {
         /*add the css class to the span with text that puts a strike through the text on that item*/
         //first acknowledge current targeted item, there has to be a way to target the list text instead of button :(
         $('.shopping-item').append("*");
-        $(this).closest('span').toggleClass('shopping-item_checked');
+        console.log($(this).closest('div').siblings('span'));
+        $(this).closest('div').siblings('span').toggleClass('shopping-item_checked');
         //const targetItem = $(event.currentTarget.closest('li'));
         //state that other buttons are not targeted
         //const otherItems = $('.shopping-item').not(targetItem);
@@ -47,12 +48,13 @@ function crossOut(){
 /*create a function that will delete an item when the delete button is clicked*/
 function removeItem(){
     //have it listen for the click of the delete button
-    $('.shopping-list').on('click','shopping-item-delete', event => {
+    $('.shopping-list').on('click','shopping-item-delete', function(event) {
+        console.log(this);
         //remove the item for which the delete button is clicked, need to target entire item instead of button :(
-        this.closest("li").remove();
+        $(this).closest("li").remove();
     });
 };
 
 $(createItem); 
 $(crossOut);
-$(removeClick);
+$(removeItem);
